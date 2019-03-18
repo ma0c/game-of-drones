@@ -4,6 +4,27 @@ This is a simple two players-single computer game.
 
 To win you have to beat three times your opponent.
 
+## Understanding the architecture
+
+This is a simple django project, I like to structure all django applications
+in a single folder called applications.
+
+- [config](config) Has all the configurations, is the default folder
+  create by the django-admin startproject
+- [applications](applications) We put all applications in this folder
+   applications are created by the django-admin startapp command
+- [applicatinos/core](applications/core) All the code is in here
+
+For each applications the following structure is used:
+- controllers folder: Is better have all business logic apart from views
+- templates: Standard django templates folder
+- static: Standard django templates folder
+- tests: As the project grows, the tests too, so create a folder for tests
+  helps not to have a large tests.py file, even we can structure an inner
+  subfolder scheme for all models/views
+- views: As tests, the views use to get bigger with time, so its better
+  have an inner package for all views
+
 ## Install locally
 
 Just create a new environment, install the requirements, create the
