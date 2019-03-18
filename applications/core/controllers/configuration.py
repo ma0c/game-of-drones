@@ -19,15 +19,14 @@ class Loader(object):
             raise ValueError("Malformed JSON")
         self.validate_configuration()
 
-
     def validate_configuration(self):
         # We want to be sure the configuration is valid
         try:
             assert self._config["name"]
             assert self._config["moves"]
             assert isinstance(self._config["moves"], list) and len(self._config["moves"]) > 0
-        except AssertionError:
-            raise ValueError("Misconfigured JSON, needs to have a name and a name and moves")
+        except (AssertionError, KeyError) as e:
+            raise AssertionError("Misconfigured JSON, needs to have a name and a name and moves")
 
         # We will store all valid moves first and then evaluate all wins and loses
         self._valid_moves = list()

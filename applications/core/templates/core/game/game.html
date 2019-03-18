@@ -6,11 +6,17 @@
             <h1>
                 We have a WINNER!!
             </h1>
-            {{ game.winner }} is the new EMPEROR
+            <p>
+                {{ game.winner }} is the new EMPEROR
+            </p>
 
-            <a href="/" class="btn">
-                Play Again
-            </a>
+            <div class="container">
+                <div class="centered-box">
+                    <a href="/" class="btn">
+                        Play Again
+                    </a>
+                </div>
+            </div>
         {% else %}
             <h1>
                 Round {{ game.current_round }}

@@ -24,3 +24,11 @@ python manage.py runserver
 docker build -t ma0collazos/game-of-drones .
 docker run -p 8000:8000 ma0collazos/game-of-drones
 ```
+
+## Testing
+
+Use default django test suite to test behavior
+
+```bash
+python manage.py test
+```
