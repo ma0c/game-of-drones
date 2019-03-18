@@ -3,11 +3,15 @@
 <html lang="en">
     <head>
         <title>{% block title %} Game of drones  {% endblock %}</title>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
     </head>
     <body>
-        {% block content %}
+        <div class="container">
 
-        {% endblock %}
+            {% block content %}
+
+            {% endblock %}
+        </div>
     </body>
 </html>

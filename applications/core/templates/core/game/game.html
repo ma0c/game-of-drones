@@ -2,19 +2,71 @@
 
 {% block content %}
     <div class="centered-box">
+        {% if game.winner %}
+            <h1>
+                We have a WINNER!!
+            </h1>
+            {{ game.winner }} is the new EMPEROR
 
-        <h1>
-            Round {{ round_number }}
-        </h1>
+            <a href="/" class="btn">
+                Play Again
+            </a>
+        {% else %}
+            <h1>
+                Round {{ game.current_round }}
+            </h1>
+            <div class="container">
+                <div>
+                    <h3>
+                        {{ current_player }}
+                    </h3>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="container">
+                            <div class="centered-box">
+                                <input type="submit" value="Ok" class="btn">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <h3>
+                        Score
+                    </h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Round
+                                </th>
+                                <th>
+                                    Winner
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for round in rounds %}
+                                <tr>
+                                    <td>
+                                        {{ round.number }}
+                                    </td>
+                                    <td>
+                                        {{ round.status }}
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                <td colspan="2">
+                                    No rounds played
+                                </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
 
-        <h3>
-            {{ current_player }}
-        </h3>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-
-            <input type="submit" value="Ok">
-        </form>
     </div>
 {% endblock %}

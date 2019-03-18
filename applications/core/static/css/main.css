@@ -1,7 +1,29 @@
+body {
+    font-family: 'Roboto';
+    font-size: 22px;
+}
+
+input[type=text]{
+    border-radius: .25rem;
+    width: 75%;
+}
+
 .container{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .centered-box{
-    justify-content: center;
+    max-width: 50%;
+}
+
+.btn{
+    padding: 10px;
+    border-radius: .25rem;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    background: #00afc4;
+    color: white;
 }

@@ -9,8 +9,12 @@
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
+            <div class="container">
+                <div class="centered-box">
 
-            <input type="submit" value="Start">
+                    <input type="submit" value="Start" class="btn">
+                </div>
+            </div>
         </form>
     </div>
 {% endblock %}

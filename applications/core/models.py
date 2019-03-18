@@ -17,21 +17,26 @@ class GameMove(models.Model):
     """
     name = models.CharField(max_length=100)
     game_type = models.ForeignKey(GameType, on_delete=models.CASCADE)
-    wins_to = models.ForeignKey(
-        "GameMove",
-        related_name="wins",
-        null=True,
-        on_delete=models.CASCADE
-    )
-    loses_to = models.ForeignKey(
-        "GameMove",
-        related_name="loses",
-        null=True,
-        on_delete=models.CASCADE
-    )
 
     def __str__(self):
         return self.name
+
+
+class MoveResult(models.Model):
+    game_type = models.ForeignKey(GameType, on_delete=models.CASCADE)
+    move = models.ForeignKey(
+        GameMove,
+        on_delete=models.CASCADE
+    )
+    against = models.ForeignKey(
+        GameMove,
+        related_name="against",
+        on_delete=models.CASCADE
+    )
+    wins = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.move} vs {self.against} {'wins' if self.wins else 'loses'}"
 
 
 class Player(models.Model):
@@ -71,17 +76,21 @@ class Game(models.Model):
         return f"Game {self.id}: {self.player1} vs {self.player2}"
 
 
-
 class Round(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     number = models.PositiveIntegerField()
     player1_move = models.ForeignKey(
         GameMove,
         related_name="p1_move",
+        null=True,
         on_delete=models.CASCADE
     )
     player2_move = models.ForeignKey(
         GameMove,
         related_name="p2_move",
+        null=True,
         on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        return f"{self.game} round {self.number} {self.player1_move} {self.player2_move}"

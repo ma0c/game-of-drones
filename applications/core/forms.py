@@ -25,5 +25,6 @@ class Game(forms.Form):
 
 class Round(forms.Form):
     move = forms.ModelChoiceField(
-        queryset=core_models.GameMove.objects.all()
+        queryset=core_models.GameMove.objects.all(),
+        label="Select move"
     )
