@@ -17,3 +17,10 @@ python manage.py migrate
 python manage.py configure_game rock_paper_scissors.json
 python manage.py runserver
 ```
+
+## Build with docker
+
+```bash
+docker build -t ma0collazos/game-of-drones .
+docker run -p 8000:8000 ma0collazos/game-of-drones
+```
