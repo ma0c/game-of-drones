@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="centered-box">
+
+        <h1>
+            Round {{ round_number }}
+        </h1>
+
+        <h3>
+            {{ current_player }}
+        </h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="Ok">
+        </form>
+    </div>
+{% endblock %}

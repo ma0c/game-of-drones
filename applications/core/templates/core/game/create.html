@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="centered-box">
+
+        <h1>
+            Enter Player's Names
+        </h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="Start">
+        </form>
+    </div>
+{% endblock %}

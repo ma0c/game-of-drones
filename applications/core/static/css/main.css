@@ -1,0 +1,7 @@
+.container{
+    display: flex;
+}
+
+.centered-box{
+    justify-content: center;
+}
