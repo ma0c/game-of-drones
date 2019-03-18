@@ -25,7 +25,12 @@ SECRET_KEY = '$z((b#m005iwj#bm%b!nzu(7y79v(22&tw&^o9y1%d9*v8n!9)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "127.0.1.1",
+    "game-of-drones.contraslash.com",
+]
 
 
 # Application definition
